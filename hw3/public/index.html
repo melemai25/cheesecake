@@ -1,0 +1,90 @@
+<!Author: Alexander Melemai
+Date: 1/24/23
+Course: Software Engineering>
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src=http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js>
+	</script>
+	<script src="javascripts/dropdown.js"></script>
+	<script src="javascripts/submit.js"></script>
+	<title>Cheesecake Order Form</title>
+	<link rel="stylesheet" href="../stylesheets/index.css">
+</head>
+<body>
+
+<h1>Cheesecake Order Form</h1>
+
+<!image of cheesecake>
+<img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Mondays_at_Il_Forno_-_Cheesecake_with_strawberry_sauce.jpg" 
+alt="Girl in a jacket" width="250" height="300">
+<div style="display:none"  id="thankYou">
+<h2>Thank you! Your order has been placed.</h2>
+<p id="orderSum">No order.</p>
+</div>
+<!form(drop down, bubbles, note, and submit)>
+<form style="height: 275px" id="myForm">
+<p>Quantity Topping</p>
+<div style="position: relative; float: left">
+  <select name="quantities" id="quantities" style = "margin: 10px">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+  </select>
+</div>
+  
+<div style="position: relative; float: left">
+  <input type="radio" id="plain" name="topping" value="Plain">
+<label for="plain">Plain</label><br>
+<input type="radio" id="cherry" name="topping" value="Cherry">
+<label for="cherry">Cherry</label><br>
+<input type="radio" id="chocolate" name="topping" value="Chocolate">
+<label for="chocolate">Chocolate</label>
+</div>
+
+<div style="position: absolute; top: 500px">
+<p>Notes:</p>
+<textarea name="message" style="width:400px; height:100px" id="message" placeholder="Enter any special instructions here".>
+</textarea>
+</div>
+
+<br>
+
+<button type="submit" value="Order" style="position:absolute; top: 670px;">
+Order</button>
+
+</form>
+
+<br>
+
+<!Last months orders>
+<div class="dropdown">
+	<button class="dropbtn" value="Jan">Jan</button>
+	<div class="dropdown-content">
+		<a href="#" value="Jan">Jan</a>
+	<a href="#" value="Feb">Feb</a>
+	<a href="#" value="Mar">Mar</a>
+	<a href="#" value="Apr">Apr</a>
+	<a href="#" value="May">May</a>
+	<a href="#" value="Jun">Jun</a>
+	<a href="#" value="Jul">Jul</a>
+	<a href="#" value="Aug">Aug</a>
+	<a href="#" value="Sep">Sep</a>
+	<a href="#" value="Oct">Oct</a>
+	<a href="#" value="Nov">Nov</a>
+	<a href="#" value="Dec">Dec</a>
+
+ </div>
+</div>
+<h style="position:relative; top:10px"><b>Total Orders </b></h>
+<ul id="listF">
+  <li>11 cherry</li>
+  <li>17 chocolate</li>
+  <li>31 plain</li>
+</ul>
+
+</body>
+</html>
+
+
