@@ -1,7 +1,13 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\hw3",
+    "\\hw3\\public",
+    "\\hw3\\public\\images",
+    "\\hw3\\public\\javascripts",
+    "\\hw3\\public\\stylesheets",
+    "\\hw3\\tests"
   ],
-  "SelectedNode": "\\C:\\Users\\almel\\Source\\Repos\\cheesecake",
+  "SelectedNode": "\\hw3\\tests\\test2.test.js",
   "PreviewInSolutionExplorer": false
 }
