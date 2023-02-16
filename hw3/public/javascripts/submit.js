@@ -1,3 +1,4 @@
+//Alexander Melemai
 eventHandler = function (event) {
 	var text = document.getElementById("message").value;
 	var thankYou = document.getElementById("thankYou");
