@@ -10,7 +10,17 @@ $(document).ready(function () {
 				var btn = e.target;
 				button1.text(btn.text).val(btn.text);
 
+$.post("http://localhost:3000/orders", {}, function(data) {
+        $("ul").empty();
+        $("ul").append(data);
+    });
 			});
+
+
+
+app.listen(3000, function(){
+  console.log("server is running on port 3000");
+})
 
 		});
 
