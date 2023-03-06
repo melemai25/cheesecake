@@ -6,8 +6,9 @@
     "\\hw3\\public\\images",
     "\\hw3\\public\\javascripts",
     "\\hw3\\public\\stylesheets",
+    "\\hw3\\routes",
     "\\hw3\\tests"
   ],
-  "SelectedNode": "\\hw3\\tests\\test2.test.js",
+  "SelectedNode": "\\hw3\\public\\javascripts\\dropdown.js",
   "PreviewInSolutionExplorer": false
 }
