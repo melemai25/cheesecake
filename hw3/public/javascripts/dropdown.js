@@ -23,7 +23,7 @@ $(document).ready(function () {
         var cherryCount = 0;
         var chocolateCount = 0;
 
-        // Loop through the orders and count the number of occurrences of each topping
+        // Loop through the orders and count the number of each topping
         orders.data.forEach(function(order) {
           if (order.topping === 'plain') {
             plainCount += order.quantity;

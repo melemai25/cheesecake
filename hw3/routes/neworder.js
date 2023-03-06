@@ -1,42 +1,40 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const mysql = require('mysql');
+var express = require('express');
+var router = express.Router();
+var dbms = require('./dbms.js');
+const cors = require('cors');
+router.use(cors());
 
-
-const app = express();
-app.use(bodyParser.urlencoded({ extended: false }));
-
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'username',
-    password: 'password',
-    database: 'CHEESECAKE'
-});
-
-app.post('/neworder', (req, res) => {
-    const { quantity, topping, notes } = req.body;
-
-    // construct the INSERT statement
-    const order = {
-        ORDERID: Math.floor(Math.random() * 1000000),
-        MONTH: 'JANUARY', // hardcoded month
-        DAY: 1, // hardcoded day
-        QUANTITY: quantity,
-        TOPPING: topping,
-        NOTES: notes
+/* post JSON array */
+router.post('/', function (req, res, next) {
+    console.log("parsing data");
+    var quantity = req.body.quantity;
+    var topping = req.body.topping;
+    var notes = req.body.notes;
+    var orderid = 99;
+    var month = 'MAR';
+    var day = 1;
+    var order = {
+        "orderid": orderid,
+        "month": month,
+        "day": day,
+        "topping": topping,
+        "quantity": quantity,
+        "notes": notes
     };
-    const sql = 'INSERT INTO orders SET ?';
 
-    // execute the INSERT statement
-    connection.query(sql, order, (err, result) => {
+
+    dbms.dbinsert(order, function (err, data) {
         if (err) {
-            console.error('Error adding order to database:', err);
-            res.sendStatus(500);
+            console.log(err);
+            res.status(500).send('Error adding order to database');
         } else {
-            console.log('Order added to database:', order);
-            res.sendStatus(200);
+            console.log("Success!");
+            res.status(200).send('Order added to database');
         }
     });
 });
 
-app.listen(3000, () => console.log('Server listening on port 3000.'));
+module.exports = router;
+
+
+

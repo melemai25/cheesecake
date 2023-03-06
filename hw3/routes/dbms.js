@@ -77,6 +77,63 @@ exports.dbquery = function(query_str, callback) {
         //close connection to database
         dbclient.end();
 
-    });
+        });
+
 
 }//function dbquery
+exports.dbinsert = function (order, callback) {
+    var dbclient;
+    async.waterfall([
+
+        //Step 1: Connect to the database
+        function (callback) {
+            console.log("\n** creating connection for insertion.");
+            dbclient = mysql.createConnection({
+                host: host,
+                user: user,
+                password: password,
+                database: database,
+            });
+
+            dbclient.connect(callback);
+        },
+        //Step 2: Insert data
+        function (dbclient, callback) {
+            console.log("\n** inserting data");
+            //console.log(order);
+            dbclient.query("INSERT INTO ORDERS (ORDERID, MONTH, DAY, QUANTITY, TOPPING, NOTES) VALUES (?, ?, ?, ?, ?, ?)",
+                [order.orderid, order.month, order.day, order.quantity, order.topping, order.notes],
+                function (err, result) {
+                    if (err) {
+                        console.log("Database insert failed.  sad");
+                        console.log(err);
+                        callback(err, null);
+                    } else {
+                        console.log("Database insert completed.");
+                        callback(null, result);
+                    }
+                }
+            );
+
+        }
+
+    ],
+        // waterfall cleanup function
+        function (err, res) {
+            if (err) {
+                console.log("Database insert failed.  sad");
+                console.log(err);
+                callback(err, null);
+            } else {
+                console.log("Database insert completed.");
+                callback(false);
+            }
+
+            //close connection to database
+            dbclient.end();
+
+        });
+
+}//function dbinsert
+
+
